@@ -5,3 +5,10 @@
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+ 
+    @foreach(var score in ViewData.Model)
+    {
+        <p>Player Name: @score.PlayerName</p>
+        <p>Score: @score.Score</p>
+        <p>Date: @score.QuizDate</p>
+    }

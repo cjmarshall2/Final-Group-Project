@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Final_Group_Project.Models;
 
 namespace Final_Group_Project.Controllers
 {
     public class HomeController : Controller
     {
+        ScoresDBEntities db;
+        public HomeController()
+        {
+            db = new ScoresDBEntities();
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -15,8 +22,7 @@ namespace Final_Group_Project.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
+            ViewData.Model = db.Scores.ToList();
             return View();
         }
 
