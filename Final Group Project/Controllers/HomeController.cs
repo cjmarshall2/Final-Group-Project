@@ -9,10 +9,10 @@ namespace Final_Group_Project.Controllers
 {
     public class HomeController : Controller
     {
-        ScoresDBEntities db;
+        ScoresDBEntities1 db;
         public HomeController()
         {
-            db = new ScoresDBEntities();
+            db = new ScoresDBEntities1();
         }
 
         public ActionResult Index()

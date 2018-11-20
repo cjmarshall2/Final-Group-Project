@@ -9,10 +9,10 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PlayerName" Type="text" Nullable="false" />
-          <Property Name="Score" Type="int" Nullable="false" />
           <Property Name="QuizDate" Type="datetime" Nullable="false" />
+          <Property Name="QuizScore" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ScoresDBModelStoreContainer">
           <EntitySet Name="Scores" EntityType="Self.Scores" Schema="dbo" store:Type="Tables" />
@@ -22,31 +22,31 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ScoresDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Scores">
+        <EntityType Name="Score">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PlayerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Score" Type="Int32" Nullable="false" />
           <Property Name="QuizDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QuizScore" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="ScoresDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Scores" EntityType="Self.Scores" />
+        <EntityContainer Name="ScoresDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Scores" EntityType="Self.Score" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ScoresDBModelStoreContainer" CdmEntityContainer="ScoresDBEntities">
+        <EntityContainerMapping StorageEntityContainer="ScoresDBModelStoreContainer" CdmEntityContainer="ScoresDBEntities1">
           <EntitySetMapping Name="Scores">
-            <EntityTypeMapping TypeName="ScoresDBModel.Scores">
+            <EntityTypeMapping TypeName="ScoresDBModel.Score">
               <MappingFragment StoreEntitySet="Scores">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
-                <ScalarProperty Name="Score" ColumnName="Score" />
                 <ScalarProperty Name="QuizDate" ColumnName="QuizDate" />
+                <ScalarProperty Name="QuizScore" ColumnName="QuizScore" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -64,7 +64,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

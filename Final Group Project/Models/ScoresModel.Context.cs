@@ -13,10 +13,10 @@ namespace Final_Group_Project.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ScoresDBEntities : DbContext
+    public partial class ScoresDBEntities1 : DbContext
     {
-        public ScoresDBEntities()
-            : base("name=ScoresDBEntities")
+        public ScoresDBEntities1()
+            : base("name=ScoresDBEntities1")
         {
         }
     
@@ -25,6 +25,6 @@ namespace Final_Group_Project.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Scores> Scores { get; set; }
+        public virtual DbSet<Score> Scores { get; set; }
     }
 }

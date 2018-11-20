@@ -159,7 +159,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Scores.cs">
+    <Compile Include="Models\Score.cs">
       <DependentUpon>ScoresModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ScoresModel.Context.cs">
