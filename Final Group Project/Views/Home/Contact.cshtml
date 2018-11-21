@@ -4,14 +4,28 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<p>
+    <!-- I get the feeling this is a TERRIBLE way of doing this but I'm committed at this point.-->
+    Enter Name: <input type="text" name="search" id="search" /> <br />
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+   <button type="button" onclick='searchFunction()'>search</button>
+
+    <script>
+        function searchFunction() {
+            window.location.href = '@Url.Action("Contact", "Home")/' + "?search=" + document.getElementById("search").value;
+
+        }
+    </script>
+
+
+</p>
+
+@if(ViewData.Model != null)
+{
+    foreach (var score in ViewData.Model)
+    {
+    <p>Player Name: @score.PlayerName</p>
+    <p>Score: @score.QuizScore</p>
+    <p>Date: @score.QuizDate</p>
+    }
+}

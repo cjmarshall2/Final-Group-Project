@@ -22,14 +22,26 @@ namespace Final_Group_Project.Controllers
 
         public ActionResult About()
         {
+            
             ViewData.Model = db.Scores.ToList();
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Contact(string search)
         {
-            ViewBag.Message = "Your contact page.";
-
+            var searchResult = db.Scores.ToList();
+            if (search != null)
+            {
+                foreach (var scores in searchResult)
+                {
+                    if (!scores.PlayerName.Contains(search))
+                    {
+                        searchResult.Remove(scores);
+                    }
+                }
+                ViewData.Model = searchResult.ToList();
+            }
+            
             return View();
         }
     }
