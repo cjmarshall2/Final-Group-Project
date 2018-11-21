@@ -20,14 +20,14 @@ namespace Final_Group_Project.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult High_Score()
         {
             
             ViewData.Model = db.Scores.ToList();
             return View();
         }
 
-        public ActionResult Contact(string search)
+        public ActionResult Search(string search)
         {
             var searchResult = db.Scores.ToList();
             if (search != null)
