@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Quiz";
+}
+
+<h2>Quiz</h2>
+
+<script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            myFunction(this);
+        }
+    };
+    xhttp.open("GET", "Questions.xml", true);
+    xhttp.send();
+
+    function myFunction(xml) {
+        var xmlDoc = xml.responseXML;
+        var id = ViewData.Model;
+        var question = xmlDoc.getElementsByName("question")[id];
+
+        var questionText = document.createElement("p");
+        questionText.innerHTML = question.getElementsByName("title").childNodes[0].value;
+
+
+    }
+
+</script>

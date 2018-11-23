@@ -17,6 +17,13 @@ namespace Final_Group_Project.Controllers
 
         public ActionResult Index()
         {
+            
+            return View();
+        }
+
+        public ActionResult Quiz(int id)
+        {
+            ViewData.Model = id;
             return View();
         }
 
