@@ -4,14 +4,20 @@
 
 
     <br />
-    <p>Welcome to the quiz, please enter your name: <input type="text" name="PlayerName" /></p>
-    <button type="button" onclick="playerName()"></button>
+    <p>Welcome to the quiz, please enter a name: <input type="text" id="PlayerName" /></p>
+    <button type="button" onclick="playerName()">Start Quiz!</button>
     
     <script>
     function playerName()
     {
-        localStorage.setItem("PlayerName", document.getElementsByName("PlayerName").value);
-
+        
+        localStorage.setItem("PlayerName", document.getElementById("PlayerName").value);
+        if (localStorage.getItem("PlayerName") == "") {
+            alert("Since you didn't enter a name like you were politely asked to your name has been set to 'Jerkface'");
+            localStorage.setItem("PlayerName", "Jerkface");
+                
+        }
+        
         window.location.href = '@Url.Action("Quiz", "Home")\?id=1';
 
     }

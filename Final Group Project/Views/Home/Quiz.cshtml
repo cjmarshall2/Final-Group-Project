@@ -5,25 +5,18 @@
 
 <h2>Quiz</h2>
 
-<script>
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            myFunction(this);
-        }
-    };
-    xhttp.open("GET", "Questions.xml", true);
-    xhttp.send();
+@{ 
+    Final_Group_Project.Models.Question question = Model;
+    <p>@question.Title</p>
+    <script>
+        var paragraph = document.createElement('p');
+        var playerName = document.createTextNode(localStorage.getItem("PlayerName"));
+        paragraph.appendChild(playerName);
 
-    function myFunction(xml) {
-        var xmlDoc = xml.responseXML;
-        var id = ViewData.Model;
-        var question = xmlDoc.getElementsByName("question")[id];
-
-        var questionText = document.createElement("p");
-        questionText.innerHTML = question.getElementsByName("title").childNodes[0].value;
-
-
+        document.body.appendChild(paragraph);
+    </script>
+    foreach(string answer in question.answers)
+    {
+        <p>@answer</p>
     }
-
-</script>
+}
