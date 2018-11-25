@@ -22,3 +22,23 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.correct{
+    color: greenyellow;
+}
+
+.incorrect{
+    color:red;
+}
+
+.unanswered{
+    color:dodgerblue;
+}
+
+.wrongButton{
+    background-color:red;
+}
+
+.correctButton {
+    background-color: greenyellow;
+}

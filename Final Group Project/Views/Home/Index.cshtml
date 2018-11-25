@@ -11,6 +11,16 @@
     function playerName()
     {
         
+        var questionResults = ["unanswered"];
+
+            for(var i = 1; i < 20; i++)
+            {
+            questionResults.push("unanswered");
+            }
+        
+       
+
+        localStorage.setItem("questionResults", JSON.stringify(questionResults));
         localStorage.setItem("PlayerName", document.getElementById("PlayerName").value);
         if (localStorage.getItem("PlayerName") == "") {
             alert("Since you didn't enter a name like you were politely asked to your name has been set to 'Jerkface'");
@@ -24,4 +34,3 @@
     </script >
 
 
-}

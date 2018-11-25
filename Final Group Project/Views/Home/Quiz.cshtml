@@ -1,22 +1,78 @@
 ﻿
+
+
 @{
     ViewBag.Title = "Quiz";
 }
 
 <h2>Quiz</h2>
 
-@{ 
+@{
     Final_Group_Project.Models.Question question = Model;
     <p>@question.Title</p>
     <script>
         var paragraph = document.createElement('p');
         var playerName = document.createTextNode(localStorage.getItem("PlayerName"));
         paragraph.appendChild(playerName);
-
         document.body.appendChild(paragraph);
+
+        function buttonClick(button) {
+
+            var questionResults = JSON.parse(localStorage.getItem("questionResults"));
+            if (button.id == "correctAnswer") {
+                questionResults[@question.ID - 1] = "correct";
+            }
+            else {
+                questionResults[@question.ID - 1] = "incorrect";
+            }
+
+            localStorage.setItem("questionResults", JSON.stringify(questionResults));
+            window.location.href = '@Url.Action("Quiz", "Home")\?id=' + (@question.ID + 1);
+        }
     </script>
-    foreach(string answer in question.answers)
+
+    foreach (string answer in question.answers)
     {
-        <p>@answer</p>
+
+        if (answer.Contains("correctAnswer")){
+            var answerString = answer.Replace("correctAnswer", "");
+            <button type="button" class="button btn btn-primary" id="correctAnswer" onclick="buttonClick(this)">@answerString</button>
+        }
+        else
+        {
+            <button type="button" class="button btn btn-primary" onclick="buttonClick(this)">@answer</button>
+        }
     }
+
+        <script>
+        var questionResults = JSON.parse(localStorage.getItem("questionResults"));
+        if (questionResults[@question.ID - 1] == "correct" || questionResults[@question.ID - 1] == "incorrect") {
+            var buttons = document.getElementsByClassName("button");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = true;
+                buttons[i].classList.remove("btn-primary");
+                buttons[i].classList.add("btn-danger");
+            }
+            document.getElementById("correctAnswer").classList.remove("btn-danger");
+            document.getElementById("correctAnswer").classList.add("btn-success");
+        }
+
+        for (var j = 1; j <= 20; j++) {
+            var link = document.createElement("a");
+            link.href = '@Url.Action("Quiz", "Home")\?id=' + j;
+            link.innerText = "Question " + (j);
+            if (questionResults[j -1] == "correct") {
+                link.classList.add("correct");
+            }
+            else if (questionResults[j -1] == "incorrect") {
+                link.classList.add("incorrect");
+            }
+            else {
+                link.classList.add("unanswered");
+            }
+            document.body.appendChild(link);
+
+
+        }
+        </script>
 }

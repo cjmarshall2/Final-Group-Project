@@ -4,7 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml;
+using System.Text.RegularExpressions;
 using Final_Group_Project.Models;
+
 
 namespace Final_Group_Project.Controllers
 {
@@ -39,7 +41,14 @@ namespace Final_Group_Project.Controllers
             {
                 if(answer.Name == "answer")
                 {
-                    list.Add(answer.InnerText);
+                    if (answer.Attributes.GetNamedItem("correctAnswer") != null)
+                    {
+                        list.Add(answer.InnerText + "correctAnswer");
+                    }
+                    else
+                    {
+                        list.Add(answer.InnerText);
+                    }
                 }
             }
             question.answers = list;
