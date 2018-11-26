@@ -27,7 +27,27 @@
             }
 
             localStorage.setItem("questionResults", JSON.stringify(questionResults));
-            window.location.href = '@Url.Action("Quiz", "Home")\?id=' + (@question.ID + 1);
+           
+
+            var nextQuestion;
+            var anyUnansweredQuestions = false;
+            for (i = 0; i < questionResults.length; i++) {
+
+                if (questionResults[i] == "unanswered") {
+                    nextQuestion = (i + 1);
+                    i = questionResults.length;
+                    anyUnansweredQuestions = true;
+
+                }
+
+            }
+            if (anyUnansweredQuestions) {
+                window.location.href = '@Url.Action("Quiz", "Home")\?id=' + (nextQuestion);
+            }
+            else {
+                window.location.href = '@Url.Action("Quiz_Complete", "Home")';
+
+            }
         }
     </script>
 
