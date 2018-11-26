@@ -34,7 +34,8 @@
     foreach (string answer in question.answers)
     {
 
-        if (answer.Contains("correctAnswer")){
+        if (answer.Contains("correctAnswer"))
+        {
             var answerString = answer.Replace("correctAnswer", "");
             <button type="button" class="button btn btn-primary" id="correctAnswer" onclick="buttonClick(this)">@answerString</button>
         }
@@ -44,7 +45,7 @@
         }
     }
 
-        <script>
+    <script>
         var questionResults = JSON.parse(localStorage.getItem("questionResults"));
         if (questionResults[@question.ID - 1] == "correct" || questionResults[@question.ID - 1] == "incorrect") {
             var buttons = document.getElementsByClassName("button");
@@ -57,7 +58,7 @@
             document.getElementById("correctAnswer").classList.add("btn-success");
         }
 
-        for (var j = 1; j <= 20; j++) {
+        for (var j = 1; j <= questionResults.length; j++) {
             var link = document.createElement("a");
             link.href = '@Url.Action("Quiz", "Home")\?id=' + j;
             link.innerText = "Question " + (j);
@@ -73,6 +74,31 @@
             document.body.appendChild(link);
 
 
-        }
-        </script>
+            }
+
+            function submitQuiz() {
+                var complete = true;
+                var confirmation = true;
+
+                for (var k = 0; k < questionResults.length; k++) {
+                    if (questionResults[k] == "unanswered") {
+                        complete = false;
+                        k = 20;
+                    }
+                }
+
+                if (!complete) {
+                    confirmation = confirm("You have unanswered questions, are you sure you want to submit your quiz?");
+                }
+
+                if (confirmation) {
+                    window.location.href = '@Url.Action("Quiz_Complete", "Home")';
+
+                }
+            }
+    </script>
+
+    <button onclick="submitQuiz()">Submit Quiz</button>
 }
+
+

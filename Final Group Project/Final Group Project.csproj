@@ -243,6 +243,7 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Quiz.cshtml" />
+    <Content Include="Views\Home\Quiz_Complete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

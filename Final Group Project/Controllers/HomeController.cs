@@ -24,6 +24,10 @@ namespace Final_Group_Project.Controllers
             return View();
         }
 
+        public ActionResult Quiz_Complete()
+        {
+            return View();
+        }
         //found info on how to load xml into mvc here http://www.aspmantra.com/2017/03/read-xml-file-and-display-data-using-asp.net-mvc-aspmantra.html
 
         public ActionResult Quiz(int id)

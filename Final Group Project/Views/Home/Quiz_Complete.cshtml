@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Quiz_Complete";
+}
+
+<h2>Quiz_Complete</h2>
+
+<script>
+    var questionResults = JSON.parse(localStorage.getItem("questionResults"));
+    var numberCorrect = 0;
+    for (i = 0; i < questionResults.length - 1; i++) {
+        if (questionResults[i] == "correct") {
+            numberCorrect ++
+        }
+    }
+
+    var p = document.createElement("p");
+    var text = document.createTextNode("Congratulations " + localStorage.getItem("PlayerName")+ ", you completed the quiz. You had " + numberCorrect + " correct answers out of "
+        + questionResults.length + " questions.")
+    p.appendChild(text);
+    document.body.appendChild(p);
+</script>
+
