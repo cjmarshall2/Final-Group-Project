@@ -31,7 +31,7 @@
 
             var nextQuestion;
             var anyUnansweredQuestions = false;
-            for (i = 0; i < questionResults.length; i++) {
+            for (i = @question.ID; i < questionResults.length; i++) {
 
                 if (questionResults[i] == "unanswered") {
                     nextQuestion = (i + 1);
@@ -40,6 +40,16 @@
 
                 }
 
+            }
+            if (!anyUnansweredQuestions) {
+                for (k = 0; k < @question.ID - 1; k++) {
+                    if (questionResults[k] == "unanswered") {
+                        nextQuestion = (k + 1);
+                        k = questionResults.length;
+                        anyUnansweredQuestions = true;
+
+                    }
+                }
             }
             if (anyUnansweredQuestions) {
                 window.location.href = '@Url.Action("Quiz", "Home")\?id=' + (nextQuestion);
