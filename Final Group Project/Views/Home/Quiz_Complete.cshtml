@@ -4,10 +4,11 @@
 }
 
 <h2>Quiz_Complete</h2>
-
+<p id="quiz">@ViewBag.Quiz</p>
 <script>
     var questionResults = JSON.parse(localStorage.getItem("questionResults"));
     var numberCorrect = 0;
+    //calculates how many questions the user answered correctly so they can recieve a score
     for (i = 0; i < questionResults.length - 1; i++) {
         if (questionResults[i] == "correct") {
             numberCorrect ++
@@ -19,5 +20,12 @@
         + questionResults.length + " questions.")
     p.appendChild(text);
     document.body.appendChild(p);
+
+    function submitScore() {
+        var quiz = document.getElementById('quiz').innerText;
+        var score = Math.ceil((numberCorrect / questionResults.length) * 100);
+        window.location.href = '@Url.Action("Save", "Home")/?quiz=' + quiz + '&playerName=' + localStorage.getItem("PlayerName") + '&quizScore=' + score;
+    }
 </script>
 
+<button type="button" onclick="submitScore()">Save Score.</button>

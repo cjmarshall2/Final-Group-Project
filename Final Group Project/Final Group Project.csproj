@@ -160,23 +160,23 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Question.cs" />
-    <Compile Include="Models\Score.cs">
-      <DependentUpon>ScoresModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ScoresModel.Context.cs">
+    <Compile Include="Models\quizScore.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ScoresModel.Context.tt</DependentUpon>
+      <DependentUpon>quizScore.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ScoresModel.cs">
+    <Compile Include="Models\quizScore.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ScoresModel.tt</DependentUpon>
+      <DependentUpon>quizScore.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ScoresModel.Designer.cs">
+    <Compile Include="Models\quizScore.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ScoresModel.edmx</DependentUpon>
+      <DependentUpon>quizScore.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Scores.cs">
+      <DependentUpon>quizScore.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -189,32 +189,33 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Questions.xml" />
+    <Content Include="Content\CSharp.xml" />
+    <Content Include="Content\XML.xml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\ScoresModel.Context.tt">
+    <Content Include="Models\quizScore.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ScoresModel.edmx</DependentUpon>
-      <LastGenOutput>ScoresModel.Context.cs</LastGenOutput>
+      <DependentUpon>quizScore.edmx</DependentUpon>
+      <LastGenOutput>quizScore.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ScoresModel.tt">
+    <Content Include="Models\quizScore.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ScoresModel.edmx</DependentUpon>
-      <LastGenOutput>ScoresModel.cs</LastGenOutput>
+      <DependentUpon>quizScore.edmx</DependentUpon>
+      <LastGenOutput>quizScore.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\ScoresModel.edmx">
+    <EntityDeploy Include="Models\quizScore.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ScoresModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>quizScore.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ScoresModel.edmx.diagram">
-      <DependentUpon>ScoresModel.edmx</DependentUpon>
+    <Content Include="Models\quizScore.edmx.diagram">
+      <DependentUpon>quizScore.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

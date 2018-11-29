@@ -5,12 +5,13 @@
 
     <br />
     <p>Welcome to the quiz, please enter a name: <input type="text" id="PlayerName" /></p>
-    <button type="button" onclick="playerName()">Start Quiz!</button>
+    <button type="button" id="CSharp" onclick="playerName(this)">Start C# Quiz!</button>
+    <button type="button" id="XML" onclick="playerName(this)">Start XML Quiz!</button>
     
     <script>
-    function playerName()
+    function playerName(button)
     {
-        
+        //when the player starts a quiz create an array of strings to keep track of users progress in the quiz
         var questionResults = ["unanswered"];
 
             for(var i = 1; i < 20; i++)
@@ -19,16 +20,19 @@
             }
         
        
-
+        //saves values to local storage so we can use it on other views
         localStorage.setItem("questionResults", JSON.stringify(questionResults));
         localStorage.setItem("PlayerName", document.getElementById("PlayerName").value);
+        //give the user a name if they didn't enter one
         if (localStorage.getItem("PlayerName") == "") {
             alert("Since you didn't enter a name like you were politely asked to your name has been set to 'Jerkface'");
             localStorage.setItem("PlayerName", "Jerkface");
                 
         }
+
         
-        window.location.href = '@Url.Action("Quiz", "Home")\?id=1';
+        //move to the first question of the users chosen quiz.
+        window.location.href = '@Url.Action("Quiz", "Home")\?id=1' + '&quiz=' + button.id;
 
     }
     </script >

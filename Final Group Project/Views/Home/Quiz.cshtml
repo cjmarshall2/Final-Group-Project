@@ -5,19 +5,27 @@
     ViewBag.Title = "Quiz";
 }
 
-<h2>Quiz</h2>
+
 
 @{
     Final_Group_Project.Models.Question question = Model;
-    <p>@question.Title</p>
+    <div id="questions" class="list-group"></div>
+    <h1>Question @question.ID</h1>
+    <br />
+    <h2>@question.Title</h2>
+    <br />
+    <p id="quiz">@ViewBag.Quiz</p>
+
     <script>
         var paragraph = document.createElement('p');
-        var playerName = document.createTextNode(localStorage.getItem("PlayerName"));
-        paragraph.appendChild(playerName);
+
         document.body.appendChild(paragraph);
 
+        //determines whether the user has A) chosen a correct or incorrect answer B) has completed the quiz and C)which question to move to if there are still unanswered questions
         function buttonClick(button) {
 
+            //figures out whether the user chose the correct answer by looking at the ID of the button that called this function
+            //and stores the result in our array for keeping track of player progress.
             var questionResults = JSON.parse(localStorage.getItem("questionResults"));
             if (button.id == "correctAnswer") {
                 questionResults[@question.ID - 1] = "correct";
@@ -25,10 +33,10 @@
             else {
                 questionResults[@question.ID - 1] = "incorrect";
             }
-
+            //saves the updated array
             localStorage.setItem("questionResults", JSON.stringify(questionResults));
-           
 
+            //tries to find the closest unanswered question AFTER the current question to move to next
             var nextQuestion;
             var anyUnansweredQuestions = false;
             for (i = @question.ID; i < questionResults.length; i++) {
@@ -39,8 +47,9 @@
                     anyUnansweredQuestions = true;
 
                 }
-
             }
+
+            //if no unanswered questions were found after the current question look for questions BEFORE this question that the user skipped to move to
             if (!anyUnansweredQuestions) {
                 for (k = 0; k < @question.ID - 1; k++) {
                     if (questionResults[k] == "unanswered") {
@@ -51,44 +60,56 @@
                     }
                 }
             }
+            var quiz = ""
+            quiz = document.getElementById('quiz').innerText;
+            //if an unanswered question was found go to it
             if (anyUnansweredQuestions) {
-                window.location.href = '@Url.Action("Quiz", "Home")\?id=' + (nextQuestion);
+                window.location.href = '@Url.Action("Quiz", "Home")\?id=' + (nextQuestion) + "&quiz=" + quiz;
             }
+            //no unanswered questions were found so the quiz must be complete
             else {
-                window.location.href = '@Url.Action("Quiz_Complete", "Home")';
+                var quiz = document.getElementById('quiz').innerText;
+                window.location.href = '@Url.Action("Quiz_Complete", "Home")\?quiz=' + quiz;
 
             }
         }
     </script>
-
+    
+    //create a button for every answer that the current question has
     foreach (string answer in question.answers)
     {
-
+        //if the answer is marked as the correct answer in the xml give this button an ID marking it as such
         if (answer.Contains("correctAnswer"))
         {
             var answerString = answer.Replace("correctAnswer", "");
             <button type="button" class="button btn btn-primary" id="correctAnswer" onclick="buttonClick(this)">@answerString</button>
         }
+        //otherwise the button recieves no ID
         else
         {
             <button type="button" class="button btn btn-primary" onclick="buttonClick(this)">@answer</button>
         }
+        <br />
+        <br />
     }
 
     <script>
+        //this code is to show the user which answer was correct and which were wrong after they have made their choice by turning wrong answer buttons red and correct answer buttons green
         var questionResults = JSON.parse(localStorage.getItem("questionResults"));
         if (questionResults[@question.ID - 1] == "correct" || questionResults[@question.ID - 1] == "incorrect") {
             var buttons = document.getElementsByClassName("button");
             for (var i = 0; i < buttons.length; i++) {
-                buttons[i].disabled = true;
+                buttons[i].disabled = true;//disable the buttons so that the user can't change their choice after seeing the correct answer
                 buttons[i].classList.remove("btn-primary");
-                buttons[i].classList.add("btn-danger");
+                buttons[i].classList.add("btn-danger");//turns all buttons red
             }
             document.getElementById("correctAnswer").classList.remove("btn-danger");
-            document.getElementById("correctAnswer").classList.add("btn-success");
+            document.getElementById("correctAnswer").classList.add("btn-success");//turns the correct button to green so user knows which answer is correct
         }
-
+        //this creates links to all the questions in the current quiz so that the user can move through them in whatever order they wish
+        //it also color codes the links to show the user which questions they haven't answered, and whether questions they have answered were answered correctly or incorrectly.
         for (var j = 1; j <= questionResults.length; j++) {
+            //var li = document.createElement("li");
             var link = document.createElement("a");
             link.href = '@Url.Action("Quiz", "Home")\?id=' + j;
             link.innerText = "Question " + (j);
@@ -101,34 +122,48 @@
             else {
                 link.classList.add("unanswered");
             }
-            document.body.appendChild(link);
+            link.classList.add("list-group-item");
+            link.classList.add("list-group-item-action");
+            //li.appendChild(link);
+            document.getElementById("questions").appendChild(link);
 
 
-            }
+        }
 
+            //this function will let the user submit their quiz early if they don't wish to complete it for some reason.
             function submitQuiz() {
                 var complete = true;
                 var confirmation = true;
-
+                //checks if there are any unanswered questions, kind of pointless since the quiz automatically submits if they have answered all the questions now but leaving it in case I change my mind on that.
                 for (var k = 0; k < questionResults.length; k++) {
                     if (questionResults[k] == "unanswered") {
                         complete = false;
-                        k = 20;
+                        k = questionResults.length;
                     }
                 }
-
+                //asks the user to confirm that they wish to submit the quiz early if there are unanswered questions
                 if (!complete) {
                     confirmation = confirm("You have unanswered questions, are you sure you want to submit your quiz?");
                 }
-
+                //if user confirms then complete the quiz.
                 if (confirmation) {
-                    window.location.href = '@Url.Action("Quiz_Complete", "Home")';
+                    var quiz = document.getElementById('quiz').innerText;
+                    window.location.href = '@Url.Action("Quiz_Complete", "Home")\?quiz=' + quiz;
 
                 }
-            }
+        }
+
+            //create a link to the submit quiz function and put it at the end of our list question links
+            var submitLink = document.createElement("a");
+            submitLink.innerText = "Submit Quiz"
+            submitLink.onclick = function () { submitQuiz() };
+            submitLink.classList.add("list-group-item");
+            submitLink.classList.add("list-group-item-action");
+            
+            document.getElementById("questions").appendChild(submitLink);
     </script>
 
-    <button onclick="submitQuiz()">Submit Quiz</button>
+    
 }
 
 

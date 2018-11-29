@@ -1,7 +1,12 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    text-align:center;
 }
+    body * {
+        margin: auto;
+        text-align:center;
+    }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -24,15 +29,15 @@ textarea {
 }
 
 .correct{
-    color: greenyellow;
+    color: greenyellow !important;
 }
 
 .incorrect{
-    color:red;
+    color:red !important;
 }
 
 .unanswered{
-    color:dodgerblue;
+    color:dodgerblue !important;
 }
 
 .wrongButton{
@@ -41,4 +46,17 @@ textarea {
 
 .correctButton {
     background-color: greenyellow;
+}
+
+#questions {
+    width: 200px;
+    display:inline;
+    float:right;
+}
+#questions a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+#quiz {
+    display:none;
 }

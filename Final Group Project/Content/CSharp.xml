@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="styles.css"?>
+<!-- By Tuan Pham and CJ Marshall -->
+<!--C# questions taken from http://www.tutorialsteacher.com/online-test/csharp-test -->
+
+<questionList>
+  <question>
+    <title>C# class can inherit multiple ________</title>
+    <answer>Class</answer>
+    <answer correctAnswer="true">Interface</answer>
+    <answer>Abstract class</answer>
+    <answer>Static class</answer>
+  </question>
+
+
+  <question compoundChoice="true">
+    <title>How to kill a user session explicitly?</title>
+    <answer>Int32</answer>
+    <answer>Double</answer>
+    <answer>Decimal</answer>
+    <answer correctAnswer="true">All of the above</answer>
+  </question>
+
+
+  <question>
+    <title>Which of the following is a reference type in C#?</title>
+    <answer correctAnswer="true">String</answer>
+    <answer>Long</answer>
+    <answer>Boolean</answer>
+    <answer>None of the above</answer>
+  </question>
+
+  <question compoundChoice ="true">
+    <title>What is Nullable type?</title>
+    <answer>It allows assignment of null to reference type.</answer>
+    <answer correctAnswer="true">It allows assignment of null to value type.</answer>
+    <answer>It allows assignment of null to static class.</answer>
+    <answer>None of the above.</answer>
+  </question>
+
+  <question>
+    <title>Struct is a _____.</title>
+    <answer>Reference type</answer>
+    <answer correctAnswer="true">Value type</answer>
+    <answer>Class type</answer>
+    <answer>String type</answer>
+  </question>
+
+  <question>
+    <title>10 > 9 ? "10 is greater than 9” : "9 is greater than 10” is an example of _______</title>
+    <answer correctAnswer="true">Ternary operator</answer>
+    <answer>Conditional operator</answer>
+    <answer>Greater than operator</answer>
+    <answer>Inverse operator</answer>
+  </question>
+
+  <question>
+    <title>Which of the following datatype can be used with enum?</title>
+    <answer correctAnswer="true">Int</answer>
+    <answer>String</answer>
+    <answer>Boolean</answer>
+    <answer>All of the above</answer>
+  </question>
+
+  <question compoundChoice ="true">
+    <title>What is indexer?</title>
+    <answer correctAnswer="true">It allows an instance of a class to be indexed like an array</answer>
+    <answer>It allows enumerator with class</answer>
+    <answer>It creates index for instances of a class.</answer>
+    <answer>None of the above.</answer>
+  </question>
+
+  <question>
+    <title>String data type is ______.</title>
+    <answer>Mutable</answer>
+    <answer >Immutable</answer>
+    <answer>Static</answer>
+    <answer>Value type</answer>
+  </question>
+
+  <question compoundChoice ="true">
+    <title>An array in C# starts with _____ index.</title>
+    <answer>One</answer>
+    <answer correctAnswer="true">Zero</answer>
+    <answer>-1</answer>
+    <answer>None of the above</answer>
+  </question>
+
+  <question>
+    <title>Which of the following is right way of declaring an array?</title>
+    <answer>int[] intArray = new int[];</answer>
+    <answer>int intArray[] = new int[5];</answer>
+    <answer correctAnswer="true">int[] intArray = new int[5];</answer>
+    <answer>int[5] intArray = new int[];</answer>
+  </question>
+
+  <question>
+    <title>Which of the following is true for ReadOnly variables?</title>
+    <answer correctAnswer="true">Value will be assigned at runtime.</answer>
+    <answer>Value will be assigned at compile time.</answer>
+    <answer>Value will be assigned when it accessed first time</answer>
+    <answer>None of the above</answer>
+  </question>
+
+  <question compoundChoice ="true">
+    <title>Which of the following statement is true?</title>
+    <answer>try block must be followed by catch or finally block or both.</answer>
+    <answer>finally block cannot include return statement.</answer>
+    <answer>try block can include another try block.</answer>
+    <answer correctAnswer="true">All of the above.</answer>
+  </question>
+
+  <question>
+    <title>Which of the following statement is true?</title>
+    <answer>A finally block may not execute every time</answer>
+    <answer correctAnswer="true">A return or break statement cannot exit a finally block.</answer>
+    <answer>A finally block can come before catch block.</answer>
+    <answer>Multiple finally block is possible.</answer>
+  </question>
+
+  <question compoundChoice ="true">
+    <title>Func and Action are the types of ______.</title>
+    <answer>Utility function</answer>
+    <answer correctAnswer="true">Delegate</answer>
+    <answer>Event</answer>
+    <answer>Generic class</answer>
+  </question>
+
+  <question>
+    <title>Return type of Predicate T() is always a ______.</title>
+    <answer>Integer</answer>
+    <answer>String</answer>
+    <answer correctAnswer="true">Boolean</answer>
+    <answer>Void</answer>
+  </question>
+
+  <question>
+    <title>A partial class allows ________</title>
+    <answer correctAnswer="true">Implementation of single class in multiple .cs files.</answer>
+    <answer>Declaration of multiple classes in a single .cs file.</answer>
+    <answer>Implementation of multiple interfaces to single class.</answer>
+    <answer>Multiple class inheritance.</answer>
+  </question>
+
+  <question>
+    <title>LINQ stands for ________.</title>
+    <answer correctAnswer="true">Language Integrated Query</answer>
+    <answer>Local Integration Query</answer>
+    <answer>Language Included Query</answer>
+    <answer>Lazy Integrated Query</answer>
+  </question>
+
+  <question>
+    <title>Data type of a variable declared using var will be assigned at _______.</title>
+    <answer>Runtime</answer>
+    <answer correctAnswer="true">Compile time</answer>
+    <answer>CLR time</answer>
+    <answer>Application Initialization time.</answer>
+  </question>
+
+  <question>
+    <title>Which of the following is true for dynamic type in C#?</title>
+    <answer>It allows multiple time declaration of a variable.</answer>
+    <answer>It allows compile time type checking</answer>
+    <answer correctAnswer="true">It escapes compile time type checking</answer>
+    <answer>None of the above.</answer>
+  </question>
+
+  <wrongAnswer>Nope.</wrongAnswer>
+  <wrongAnswer>Wrong Answer.</wrongAnswer>
+  <wrongAnswer>Wrong.</wrongAnswer>
+  <wrongAnswer>Try again.</wrongAnswer>
+
+
+
+  <replacementText>I'm choosing wrong answers out of spite.</replacementText>
+  <replacementText>I'm Amish and being forced to take this quiz against my will.</replacementText>
+  <replacementText>My favorite food is glue.</replacementText>
+  <replacementText>I have no idea how a quiz works.</replacementText>
+  <replacementText>Do NOT pick this one.</replacementText>
+  <replacementText>Get me out of this stupid quiz.</replacementText>
+  <replacementText>I would rather be looking at cute animal pictures right now.</replacementText>
+  <replacementText>Ooo, a button!</replacementText>
+
+</questionList>
+
