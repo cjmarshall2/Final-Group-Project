@@ -1,15 +1,29 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "High Scores";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
 
-@foreach (var score in ViewData.Model)
-{
-    <p>Player Name: @score.PlayerName</p>
-    <p>Quiz Type: @score.QuizType</p>
-    <p>Score: @score.QuizScore</p>
-    <p>Date: @score.QuizDate</p>
-}
+@{
+    List<Final_Group_Project.Models.Scores>
+            scores = ViewData.Model;
+
+    List<Final_Group_Project.Models.Scores>
+        highScores = scores.OrderBy(o => o.QuizScore).ToList();
+    highScores.Reverse();
+    int count = 0;
+    foreach (var score in highScores)
+    {
+        if (count < 10)
+        {
+            <p>Player Name: @score.PlayerName</p>
+            <p>Quiz Type: @score.QuizType</p>
+            <p>Percentage Correct: @score.QuizScore%</p>
+            <p>Date: @score.QuizDate</p>
+            <br />
+            count++;
+        }
+    }
+    }

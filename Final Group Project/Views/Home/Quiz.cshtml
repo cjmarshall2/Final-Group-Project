@@ -94,6 +94,7 @@
     }
 
     <script>
+        var quiz = document.getElementById('quiz').innerText;
         //this code is to show the user which answer was correct and which were wrong after they have made their choice by turning wrong answer buttons red and correct answer buttons green
         var questionResults = JSON.parse(localStorage.getItem("questionResults"));
         if (questionResults[@question.ID - 1] == "correct" || questionResults[@question.ID - 1] == "incorrect") {
@@ -111,7 +112,7 @@
         for (var j = 1; j <= questionResults.length; j++) {
             //var li = document.createElement("li");
             var link = document.createElement("a");
-            link.href = '@Url.Action("Quiz", "Home")\?id=' + j;
+            link.href = '@Url.Action("Quiz", "Home")\?id=' + j + '&quiz=' + quiz;
             link.innerText = "Question " + (j);
             if (questionResults[j -1] == "correct") {
                 link.classList.add("correct");

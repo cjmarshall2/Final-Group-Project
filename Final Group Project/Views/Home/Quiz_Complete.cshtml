@@ -1,10 +1,11 @@
 ﻿
 @{
-    ViewBag.Title = "Quiz_Complete";
+    ViewBag.Title = "Quiz Complete!";
 }
 
-<h2>Quiz_Complete</h2>
+<h2>@ViewBag.Title</h2>
 <p id="quiz">@ViewBag.Quiz</p>
+<div id="quizComplete"></div>
 <script>
     var questionResults = JSON.parse(localStorage.getItem("questionResults"));
     var numberCorrect = 0;
@@ -19,7 +20,9 @@
     var text = document.createTextNode("Congratulations " + localStorage.getItem("PlayerName")+ ", you completed the quiz. You had " + numberCorrect + " correct answers out of "
         + questionResults.length + " questions.")
     p.appendChild(text);
-    document.body.appendChild(p);
+    document.getElementById("quizComplete").appendChild(p);
+
+
 
     function submitScore() {
         var quiz = document.getElementById('quiz').innerText;
