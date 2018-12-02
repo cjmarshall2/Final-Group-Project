@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Score Search";
 }
+<!--Project by Tuan Pham and CJ Marshall-->
 <br />
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
@@ -10,7 +11,7 @@
     Enter Name: <input type="text" name="search" id="search" /> <br />
     <br />
 
-   <button type="button" onclick='searchFunction()'>Search</button>
+    <button type="button" onclick='searchFunction()'>Search</button>
     <br />
     <br />
 
@@ -24,7 +25,7 @@
 
 </p>
 
-@if(ViewData.Model != null)
+@if (ViewData.Model != null)
 {
     List<Final_Group_Project.Models.Scores> scores = ViewData.Model;
 
@@ -33,10 +34,10 @@
 
     foreach (var score in highScores)
     {
-    <p>Player Name: @score.PlayerName</p>
-    <p>Quiz Type: @score.QuizType</p>
-    <p>Percentage Correct: @score.QuizScore%</p>
-    <p>Date: @score.QuizDate</p>
-    <br />
+        <p>Player Name: @score.PlayerName</p>
+        <p>Quiz Type: @score.QuizType</p>
+        <p>Percentage Correct: @score.QuizScore%</p>
+        <p>Date: @score.QuizDate</p>
+        <br />
     }
 }

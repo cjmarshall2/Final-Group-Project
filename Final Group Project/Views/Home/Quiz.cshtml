@@ -1,12 +1,7 @@
-﻿
-
-
-@{
+﻿@{
     ViewBag.Title = "Quiz";
 }
-
-
-
+<!--Project by Tuan Pham and CJ Marshall-->
 @{
     Final_Group_Project.Models.Question question = Model;
     <div id="questions" class="list-group"></div>
@@ -75,7 +70,7 @@
             }
         }
     </script>
-    
+
     //create a button for every answer that the current question has
     foreach (string answer in question.answers)
     {
@@ -161,11 +156,11 @@
             submitLink.onclick = function () { submitQuiz() };
             submitLink.classList.add("list-group-item");
             submitLink.classList.add("list-group-item-action");
-            
+
             document.getElementById("questions").appendChild(submitLink);
     </script>
 
-    
+
 }
 
 
