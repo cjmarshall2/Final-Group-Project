@@ -1,14 +1,18 @@
 ﻿@{
     ViewBag.Title = "Score Search";
 }
+<br />
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
-
+<br />
 <p>
     <!-- I get the feeling this is a TERRIBLE way of doing this but I'm committed at this point.-->
     Enter Name: <input type="text" name="search" id="search" /> <br />
+    <br />
 
-   <button type="button" onclick='searchFunction()'>search</button>
+   <button type="button" onclick='searchFunction()'>Search</button>
+    <br />
+    <br />
 
     <script>
         function searchFunction() {

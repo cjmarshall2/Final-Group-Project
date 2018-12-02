@@ -2,9 +2,10 @@
 @{
     ViewBag.Title = "Quiz Complete!";
 }
-
+<br />
 <h2>@ViewBag.Title</h2>
 <p id="quiz">@ViewBag.Quiz</p>
+<br />
 <div id="quizComplete"></div>
 <script>
     var questionResults = JSON.parse(localStorage.getItem("questionResults"));
@@ -30,5 +31,7 @@
         window.location.href = '@Url.Action("Save", "Home")/?quiz=' + quiz + '&playerName=' + localStorage.getItem("PlayerName") + '&quizScore=' + score;
     }
 </script>
-
+<br />
 <button type="button" onclick="submitScore()">Save Score.</button>
+<br />
+<br />

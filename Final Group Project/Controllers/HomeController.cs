@@ -91,16 +91,19 @@ namespace Final_Group_Project.Controllers
         public ActionResult Search(string search)
         {
             var searchResult = db.Scores.ToList();
-            if (search != null)
+            var searchResultCopy = new List<Scores>(searchResult);//create a copy of list to stop foreach loop from throwing an exception due to modifying
+            //the original searchResult list
+            if (search != null)//prevents an error when the user first selects search and hasn't entered a search term.
             {
                 foreach (var scores in searchResult)
                 {
                     if (!scores.PlayerName.Contains(search))
                     {
-                        searchResult.Remove(scores);
+                        searchResultCopy.Remove(scores);
                     }
                 }
-                ViewData.Model = searchResult.ToList();
+                //show user the results of their search
+                ViewData.Model = searchResultCopy.ToList();
             }
             
             return View();

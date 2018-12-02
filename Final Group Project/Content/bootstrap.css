@@ -109,27 +109,38 @@ samp {
   font-size: 1em;
 }
 button,
-input,
 optgroup,
 select,
 textarea {
   margin: 0;
   font: inherit;
-  color: inherit;
+  color: white;
+}
+input textarea {
+    margin: 0;
+    font: inherit;
+    color: black;
 }
 button {
   overflow: visible;
 }
 button,
 select {
-  text-transform: none;
+  text-transform: none];
 }
 button,
 html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  -webkit-appearance: button;
-  cursor: pointer;
+    -webkit-appearance: button;
+    cursor: pointer;
+    background-color: #286090;
+    
+}
+
+button:hover {
+    background-color: #4CAF50;
+    color: white;
 }
 button[disabled],
 html input[disabled] {
@@ -4589,11 +4600,11 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 .navbar-inverse {
-  background-color: #222;
+  background-color: lightblue;
   border-color: #080808;
 }
 .navbar-inverse .navbar-brand {
-  color: #9d9d9d;
+  color: black;
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
@@ -4601,10 +4612,10 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   background-color: transparent;
 }
 .navbar-inverse .navbar-text {
-  color: #9d9d9d;
+  color: black;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #9d9d9d;
+  color: black;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
@@ -4651,7 +4662,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
     background-color: #080808;
   }
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
-    color: #9d9d9d;
+    color: black;
   }
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {

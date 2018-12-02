@@ -190,6 +190,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CSharp.xml" />
+    <Content Include="Content\SQL.xml" />
     <Content Include="Content\XML.xml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

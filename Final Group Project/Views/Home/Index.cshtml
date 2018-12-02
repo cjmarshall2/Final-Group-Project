@@ -5,8 +5,15 @@
 
     <br />
     <p>Welcome to the quiz, please enter a name: <input type="text" id="PlayerName" /></p>
+    <br />
+    <p>Each test includes 20 questions. There is no time limit for these tests.</p>
+    <p>Good luck!</p>
+    <br />
     <button type="button" id="CSharp" onclick="playerName(this)">Start C# Quiz!</button>
     <button type="button" id="XML" onclick="playerName(this)">Start XML Quiz!</button>
+    <button type="button" id="SQL" onclick="playerName(this)">Start SQL Quiz!</button>
+    <br />
+    <br />
     
     <script>
     function playerName(button)
@@ -20,19 +27,57 @@
             }
         
        
-        //saves values to local storage so we can use it on other views
-        localStorage.setItem("questionResults", JSON.stringify(questionResults));
-        localStorage.setItem("PlayerName", document.getElementById("PlayerName").value);
-        //give the user a name if they didn't enter one
-        if (localStorage.getItem("PlayerName") == "") {
-            alert("Since you didn't enter a name like you were politely asked to your name has been set to 'Jerkface'");
-            localStorage.setItem("PlayerName", "Jerkface");
-                
-        }
-
         
-        //move to the first question of the users chosen quiz.
-        window.location.href = '@Url.Action("Quiz", "Home")\?id=1' + '&quiz=' + button.id;
+        //I couldn't really think of a place to fit validation in this program so it's shoved in here just to have it.
+        //It's modeled after those irritating password requirements
+        localStorage.setItem("PlayerName", document.getElementById("PlayerName").value);
+        var valid = true;
+        var errorMessage = ""
+        var playerName = localStorage.getItem("PlayerName").toString();
+
+        //multiple regex statements so I can be specific about which requirement failed
+        var regexDigit = /\d/;
+        var regexWhiteSpace = /\s/;
+        var regexSpecialCharacter = /[^A-Za-z0-9_]/;
+        var regexCapitalLetter = /[A-Z]/;
+
+        if (localStorage.getItem("PlayerName") == "") {
+            errorMessage += "Name can not be empty. \n";
+            valid = false;
+        }
+        if (localStorage.getItem("PlayerName").length < 3) {
+            errorMessage += "Name must be at least 3 characters long. \n"
+            valid = false;
+        }
+        if (!(regexDigit.test(playerName))) {
+            errorMessage += "Name must contain a digit. \n"
+            valid = false;
+        }
+        if (regexWhiteSpace.test(playerName)) {
+            errorMessage += "Name can not contain whitespace. \n"
+            valid = false;
+        }
+        if (!regexSpecialCharacter.test(playerName)) {
+            errorMessage += "Name must contain a special character. \n"
+            valid = false;
+        }
+        if (!regexCapitalLetter.test(playerName)) {
+            errorMessage += "Name must contain a capital letter. \n"
+            valid = false;
+        }
+        
+        //if user entry meets all requirements continue with quiz
+        if (valid) {
+            //saves values to local storage so we can use it on other views
+            localStorage.setItem("questionResults", JSON.stringify(questionResults));
+
+            //move to the first question of the users chosen quiz.
+            window.location.href = '@Url.Action("Quiz", "Home")\?id=1' + '&quiz=' + button.id;
+        }
+        //otherwise show error message that contains all the mistakes user made.
+        else {
+            alert(errorMessage);
+        }
 
     }
     </script >

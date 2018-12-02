@@ -1,23 +1,25 @@
 ﻿@{
     ViewBag.Title = "High Scores";
 }
+<br />
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<br />
 
 @{
     List<Final_Group_Project.Models.Scores>
-            scores = ViewData.Model;
+            scores = ViewData.Model;//get a list of scores
 
-    List<Final_Group_Project.Models.Scores>
+    List<Final_Group_Project.Models.Scores>//put them in order of the percentage score property
         highScores = scores.OrderBy(o => o.QuizScore).ToList();
-    highScores.Reverse();
+    highScores.Reverse();//reverse the list so that  the highest score is first in the list
     int count = 0;
     foreach (var score in highScores)
     {
-        if (count < 10)
+        if (count < 10)//displays the top ten scores.
         {
+            <h3>@(count + 1)</h3>
             <p>Player Name: @score.PlayerName</p>
             <p>Quiz Type: @score.QuizType</p>
             <p>Percentage Correct: @score.QuizScore%</p>
